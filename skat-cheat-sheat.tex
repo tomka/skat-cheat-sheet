@@ -4,16 +4,17 @@
 \usepackage{pifont}
 \usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{array,booktabs}
+\usepackage{relsize}
 
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \setlength{\parskip}{0.3cm plus4mm minus3mm}
 \setlength{\parindent}{0cm}
 
-\newcommand{\clubs}{{\large\Pisymbol{psy}{"A7}}}
-\newcommand{\spades}{{\large\Pisymbol{psy}{"AA}}}
-\newcommand{\hearts}{{\large\color{red}\Pisymbol{psy}{"A9}}}
-\newcommand{\diamonds}{{\large\color{red}\Pisymbol{psy}{"A8}}}
+\newcommand{\clubs}{{\larger[2]\Pisymbol{psy}{"A7}}}
+\newcommand{\spades}{{\larger[2]\Pisymbol{psy}{"AA}}}
+\newcommand{\hearts}{{\larger[2]\color{red}\Pisymbol{psy}{"A9}}}
+\newcommand{\diamonds}{{\larger[2]\color{red}\Pisymbol{psy}{"A8}}}
 
 \newcommand{\clubsX}[1]{\clubs\,#1}
 \newcommand{\spadesX}[1]{\spades\,#1}
@@ -86,7 +87,7 @@
   All four jacks are trump, regardless of the suit. Their ranking follows the
   ranking of suits: \clubs \spades \hearts \diamonds. Next and also trump are the
   remaining seven cards of the chosen suit. This makes eleven trumps in total:
-  \trumpjacks \nonjackcards. The other three suits contain just seven cards,
+  \trumpjacks{} \nonjackcards. The other three suits contain just seven cards,
   ranked: \nonjackcards.
 
   \subsubsection*{Grand}
@@ -153,9 +154,8 @@
 
   If both M and R pass without having bid, then F can either be declarer at the
   lowest bid (18), or can throw in the cards without play. If the cards are
-  thrown in there is no score for the hand, and the next dealer deals.
-
-  Examples:
+  thrown in there is no score for the hand, and the next dealer deals. Here are
+  three examples:
 
   \begin{minipage}[t][5cm]{0.5\textwidth}
     \centering
@@ -201,9 +201,212 @@
 
   \section*{Possible Contracts}
 
+  The winner of the bidding is entitled to pick up the two skat cards, add them
+  to your hand without showing them ot the other players, and discard any two
+  cards face down. The cards discarded may include one or both of the cards
+  picked up, and their value counts along with your tricks. Having discarded,
+  you declare your game. If you looked at the skat, your contract is a skat
+  game. There are seven possibilities:
+
+  {\bfseries Diamonds, Hearts, Spades, Clubs} (in which the named suit is trumps and the
+   declarer tries to take at least 61 card points),
+
+  {\bfseries Grand} (in which the jacks are the only trumps and the declarer tries to take
+   at least 61 card points),
+
+  {\bfseries Null} (in which there are no trumps and the declarer tries to lose every
+   trick),
+
+  {\bfseries Null Ouvert} (Open Null) (like Null but with declarer's cards are exposed).
+
+  You may choose not to look at the skat cards, but to play with the 10 cards
+  you were originally dealt. If you don't look at the skat you are playing a
+  hand game, and again there are seven possibilities: Diamonds Hand, Hearts
+  Hand, Spades Hand, Clubs Hand, Grand Hand, Null Hand and Null Ouvert Hand.
+  In this case no one must look at the skat cards until after the play.
+
+  If you are declarer in a Suit Hand or Grand Hand game, you can increase the
+  value of the game by announcing {\bfseries Schneider} (undertaking to win at
+  least 90 card points), or {\bfseries Schwarz} (undertaking to win all the
+  tricks), or {\bfseries Open} (Ouvert) (undertaking to win all the tricks with
+  your cards exposed). Such announcements must be made before the first trick is
+  made. \emph{These announcements are not allowed if declarer has looked at the
+  skat}. Also (obviously) they do not apply in Null games.
+
   \section*{The Play}
+
+  Play is clockwise. No matter who is the declarer, forehand always leads to the
+  first trick. Players must follow suit if they can. A player with no card of
+  the suit led may play any card. Note that in Suit and Grand games the jacks
+  belong to the trump suit, \emph{not} to the suits marked on them. For example
+  if hearts are trumps, the jack of clubs is the highest \emph{heart}, and has
+  nothing whatever to do with the club suit.
+
+  A trick is won by the highest card of the suit led, unless it contains a
+  trump, in which case the highest trump wins it. The winner of a trick leads
+  to the next.
+
+  If you are declarer in a {\bfseries Suit} or {\bfseries Grand} game you win if
+  the cards in your tricks plus the skat contain at least 61 card points. The
+  opponents win if their combined tricks contain at least 60 card points.
+
+  If the declarer's opponents take 30 points or fewer in tricks, they are
+  \emph{Schneider}. If they take 31 or more they are said to \emph{be out of
+  Scheider}. If they take no tricks at all, they are \emph{Schwarz}. The same
+  applies to the declarer - as declarer, you are \emph{Schneider} if you win 30
+  card points or less including the skat, and Schwarz if you lose every trick.
+  Note that Schwarz depends on tricks not points - if a side wins just one trick
+  and it has no card points in it, that is sufficient to get them out of
+  Schwarz.
+
+  If you are declarer in {\bfseries Null} or {\bfseries Null Ouvert}, you win the
+  game if you manage to lose every trick. If you take a trick, you have lost and
+  the play of the hand ceases at that point.
+
+  If you are declarer in an Open (Ouvert) contract - i.e. you are playing
+  {\bfseries Null Ouvert} or have announced Open in a Suit or Grand contract -
+  you have to spread out your hand face up on the table before the lead to the
+  first trick. Play then proceeds normally, and you play from your exposed hand.
+  The opponents are not allowed to discuss tactics.
 
   \section*{Calculating the Value of the Game}
 
+  \subsection*{Suit and Grand contracts}
+
+  The value of a Suit or Grand contract is obtained by multiplying together two
+  numbers: the base value and the multiplier. The base value depends on the
+  trump suit as follows:
+
+  \begin{tabular}{l c}
+    {\bfseries Contract} & {\bfseries Base value} \\
+    Diamonds &  9 \\
+    Hearts   & 10 \\
+    Spades   & 11 \\
+    Clubs    & 12 \\
+    Grand    & 24 \\
+  \end{tabular}
+
+  The multiplier is the sum of all applicable items from the following table
+  (n/a = not applicable):
+
+  \begin{tabular}{l c c}
+    {\bfseries Multiplier} & {\bfseries Skat game} & {\bfseries Hand game} \\
+    Matadors (with or against) & 1 each & 1 each \\
+    Game (always applies) & 1 & 1 \\
+    Hand (declarer did not look at the skat) & n/a & 1 \\
+    Schneider (one side took 90 or more card points) & 1 & 1 \\
+    Schneider announced  & n/a & 1 \\
+    Schwarz (one side took every trick) & 1 & 1 \\
+    Schwarz announced  & n/a & 1 \\
+    Open & n/a & 1 \\
+  \end{tabular}
+
+  Note that all applicable multipliers count - for example
+
+  \begin{itemize}
+    \item if you make the opponents Schwarz, you count the matadors, game,
+      Schneider and Schwarz multipliers;
+    \item if you announce and make Schneider you count matadors, game, Hand,
+      Schneider and Schneider announced;
+    \item if you announce and make Schwarz you count matadors, game, Hand,
+      Schneider, Schneider announced, Schwarz, Schwarz announced.
+  \end{itemize}
+
+  Open contracts are extremely rare: you can only play open if you did not look
+  at the skat and you also undertake to win every trick. By implication, an open
+  contract includes announcements of Schneider and Schwarz, so you count:
+  matadors, game, Hand, Schneider, Schneider announced, Schwarz, Schwarz
+  announced, and Open.
+
+  \subsubsection*{Matadors}
+
+  The jack of clubs and any top trumps in unbroken sequence with it are called
+  matadors. If as declarer you have such a sequence in your original hand plus
+  the skat, you are with that number of matadors. If there is such a sequence in
+  the opponents' combined hands, declarer is against that number of matadors.
+
+  {\bfseries Examples of matadors} (Hearts are trumps)
+
+  \begin{tabular}{l l}
+    Declarer has & Declarer is \\
+    \clubsX{J}, \heartsX{J}, \diamondsX{J}, \heartsX{A}, \heartsX{10},
+        \heartsX{Q}, \heartsX{9} & with 1 \\
+    \clubsX{J}, \spadesX{J}, \heartsX{J}, \diamondsX{J}, \heartsX{A},
+        \heartsX{10}, \heartsX{K} & with 7 \\
+    \spadesX{J}, \heartsX{J}, \heartsX{A}, \heartsX{K}, \heartsX{Q},
+        \heartsX{7} & against 1 \\
+    \diamondsX{J}, \heartsX{A}, \heartsX{10}, \heartsX{K}, \heartsX{Q},
+      \heartsX{7} & against 3 \\
+  \end{tabular}
+
+  Note that for the purposes of matadors, cards in the skat count as part of
+  declarer's hand, even though in a Hand game declarer does not know what is in
+  the skat when choosing the game.
+
+  The game multiplier is always counted, whether declarer wins or loses. The
+  calculation of the value of a game sounds something like this: "with 2, game
+  3, Schneider 4, 4 times spades is 44". The declarer must always be with or
+  against at least one matador (the jack of clubs must be somewhere), so the
+  smallest possible multiplier is 2, and the smallest possible game value (and
+  the lowest possible bid) is 18.
+
+  \subsection*{Null contracts}
+
+  These are easy to score. Each possible Null contract has a fixed value
+  unaffected by multipliers. As with all contracts, an unsuccessful declarer
+  loses twice the value of the game. The Null values are:
+
+  \begin{tabular}{l c c}
+    {\bfseries Contract} & {\bfseries Fixed Value} & {\bfseries Amount lost if
+        unsuccessful} \\
+    Null & 23 & 46 \\
+    Null Hand & 35 & 70 \\
+    Null Ouvert & 46 & 92 \\
+    Null Ouvert Hand & 59 & 118 \\
+  \end{tabular}
+
+  These rather eccentric looking numbers are chosen to fit between the other
+  contract values, each being slightly below a multiple of 12. (Before the rule
+  change of 1st Jan 1999, Null Hand cost only 35 when lost and Null Ouvert Hand
+  cost only 59.)
+
   \section*{Scoring}
+
+  If declarer wins the game {\bfseries and} the value of the game is as least as
+  much as the bid, then the value of the game is added to the declarer's
+  cumulative score.
+
+  If the declarer loses the game {\bfseries and} the value of the game is as
+  least as much as the bid, then {\bfseries twice} the value of the game is
+  subtracted from the declarer's score.
+
+  If the value of the declarer's game turns out to be less than the bid then
+  the declarer automatically loses - it does not matter how many card points
+  were taken. The amount subtracted from the declarer's score is {\bfseries
+  twice} the least multiple of the base value of the game actually played which
+  would have fulfilled the bid.
+
+  If as declarer you announce Schneider but take less than 90 card points, or if
+  you announce Schwarz or Open and lose a trick, you lose, counting {\bfseries
+  all} the multipliers you would have won if you had succeeded.
+
+  {\bfseries Example}: Middlehand holds \heartsX{J}, \diamondsX{J}, \clubsX{10},
+  \clubsX{K}, \clubsX{9}, \clubsX{8}, \spades{A}, \diamondsX{A}, \diamondsX{10},
+  \diamondsX{7}, and decides to play Clubs Hand. This should normally be worth
+  48 game points ("against 2, game 3, hand 4, 4 time clubs is 48"). Rearhand has
+  a Null Ouvert and bids up to 46, to which {\bfseries M} says yes. {\bfseries
+  M} plays clubs hand and takes 74 card points (including the skat cards), but
+  unfortunately the skat contains \clubsX{J}, \hearts{Q}. {\bfseries M} is
+  therefore with 1 matador (not against 2 as expected), and the game is worth
+  only 36 ("with 1, game 2, hand 3 times clubs"), which is less than the bid.
+  {\bfseries M} therefore loses 96 game points (twice the 48 points which would
+  be the minimum value in clubs which would fulfill the bid). Had {\bfseries M}
+  taken (say) 95 card points, the Schneider multiplier would have increased the
+  value of the game to 48 ("with 1, game 2, hand 3, schneider 4 times clubs")
+  and {\bfseries M} would have won 48 game points.
+
+  A side effect of the method of scoring is that if there are four players at
+  the table, the dealer of a hand is effectively against the declarer, winning
+  or losing the same as the declarer's opponents.
+
 \end{document}
