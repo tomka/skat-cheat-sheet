@@ -5,6 +5,7 @@
 \usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{array,booktabs}
 \usepackage{relsize}
+\usepackage{xcolor}
 
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
@@ -27,35 +28,48 @@
 \newcommand{\bids}{{\bfseries18, 20, 22, 23, 24, 27, 30, 33, 35, 36, 40, 44,
     45, 46, 48, 50, 54, 55, 59, 60} etc.}
 
+% No abstract title
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
 
 % Most content from:
 % http://www.pagat.com/schafk/skat.html#gamevalue
 
 \begin{document}
 
+  \title{Skat}
+  \date{}
+  \maketitle
+
+  \begin{abstract}
+    Skat is a three-handed trick taking game. It can also be played by four
+    people with the dealer sitting out. This document was created by Tom
+    Kazimiers with permission to use content from John McLeod, published on his
+    website at \emph{http://www.pagat.com/schafk/skat.html\#gamevalue}. It can be
+    redistributed under a Creative-Commons Attribution-NonCommericial 4
+    license (CC-BY-NC 4).
+  \end{abstract}
+
   \section*{Overview}
 
-  Skat is a three-handed trick taking game. It can also be played by four
-  people with the dealer sitting out. Each player gets 10 of the 32 cards and
-  the remaining two form the \emph{skat} and are placed face down in the middle
-  of the table.
+  Each player gets 10 of the 32 cards and the remaining two form the
+  \emph{skat} and are placed face down in the middle of the table.
 
   The game starts with an auction of which the winner becomes the
   \emph{declarer}. This player has to play alone against the other two, who play
   as a team. The declarer has the right to exchange the skat cards for two of
   the own cards. The declarer also chooses the trump suit or instead to play
-  \emph{Grand} (jacks are the only tump) or \emph{Null} (no trumps and declarer
+  \emph{Grand} (jacks are the only trump) or \emph{Null} (no trumps and declarer
   must not get any tricks).
 
   All \emph{card points} combined add up to 120, while some cards don't
   contribute any points. To win, declarer has to to take at least 61 points. For
-  the openents, 60 points is enough to win.
+  the opponents, 60 points is enough to win.
 
   Each game has a \emph{value}, in \emph{game points}, that depends on the
-  trumps or game chosen, the location of the top trumps (\emph{matadors)} and
+  trumps or game chosen, the location of the top trumps (\emph{matadors}) and
   whether the declarer used the skat. The declarer generally wins the value of
   the game if successful, and loses the game value (doubled if skat was
-  exchanged) if unsuccesful. The game points one wins and loses are separate
+  exchanged) if unsuccessful. The game points one wins and loses are separate
   from the card points (which determine whether one wins or loses)
 
 
@@ -65,10 +79,12 @@
   common as well. There are 32 cards in use. For each suit there is: A K Q J 10
   9 8 7:
 
+  \hfill
+
   \begin{tabular}{ M{0.5cm} m{2cm} M{0.5cm} m{2cm} m{2cm} }
     {\huge \clubs} & clubs & \includegraphics[height=0.5cm]{images/german_suit_acorn} & acorns \\
     {\huge \spades} & spades & \includegraphics[height=0.5cm]{images/german_suit_gras} & leaves \\
-    {\huge \hearts} & hears & \includegraphics[height=0.5cm]{images/german_suit_herz} & herts \\
+    {\huge \hearts} & hears & \includegraphics[height=0.5cm]{images/german_suit_herz} & hearts \\
     {\huge \diamonds} & diamonds & \includegraphics[height=0.5cm]{images/german_suit_schell} & bells \\
     {\bfseries \large A} & ace & {\bfseries \large A} & ace \\
     {\bfseries \large K} & king & {\bfseries \large K} & king \\
@@ -92,7 +108,7 @@
 
   \subsubsection*{Grand}
 
-  The four jacks are the only tump: \trumpjacks. The remaining four suits each
+  The four jacks are the only trump: \trumpjacks. The remaining four suits each
   contain seven cards ranking from high to low: \nonjackcards.
 
   \subsubsection*{Null}
@@ -103,7 +119,7 @@
   \section*{Deal}
 
   The first dealer is chosen at random. Thereafter the turn to deal rotates
-  clockwise. The dealer shuffles an the player to the dealer's right cuts.
+  clockwise. The dealer shuffles and the player to the dealer's right cuts.
   Cards are dealt face down in four steps: 1. Three cards to each player 2. Two
   cards in the center (the skat) 3. Four cards to each player and finally 4.
   Three cards to each player.
@@ -122,15 +138,15 @@
   \section*{Auction}
 
   Each bid is a number which is the \emph{game value} in \emph{game points} of
-  some possivle game (see below for calculation of game values). The possible
-  bids are therefore \bids. If you bid or accept a bid it meansyou are prepared
+  some possible game (see below for calculation of game values). The possible
+  bids are therefore \bids. If you bid or accept a bid it means you are prepared
   to play a contract of at least that value in game points.
 
   The player to the dealer's left is called \emph{forehand (F)}, the player to
   the forehand's left \emph{middlehand (M)}, and the player to the middlehand's
   left is \emph{rearhand (R)}. If there are three players, R is the dealer. If
   there are four players, R is to the dealer's right. Throughout bidding F is
-  senior to M wo is senior to R. The principle is that a senior player only has
+  senior to M who is senior to R. The principle is that a senior player only has
   to \emph{equal} a junior player's bid to win the auction, whereas a junior
   player has to bid \emph{higher} than a senior player to win.
 
@@ -157,6 +173,7 @@
   thrown in there is no score for the hand, and the next dealer deals. Here are
   three examples:
 
+\noindent\fcolorbox{white}{gray!20}{%
   \begin{minipage}[t][5cm]{0.5\textwidth}
     \centering
     \vspace{0pt}
@@ -173,9 +190,11 @@
     \end{tabular}
     \vfill
   \end{minipage}
+}
   \begin{minipage}[t][5cm]{0.5\textwidth}
     \centering
     \vspace{0pt}
+    \noindent\fcolorbox{white}{gray!20}{%
     \begin{tabular}{l l l l}
         F &    M &  R & \\
        \cmidrule(r){1-3}
@@ -183,7 +202,9 @@
           &      & 18 & \\
       yes &      & pass & (F is declarer in 18) \\
     \end{tabular}
+    }
     \vfill
+    \noindent\fcolorbox{white}{gray!20}{%
     \begin{tabular}{l l l l}
          F &    M &  R & \\
        \cmidrule(r){1-3}
@@ -192,6 +213,7 @@
            &      & 20 & \\
            & pass &    & (R is declarer in 20) \\
     \end{tabular}
+    }
   \end{minipage}
 
   To remember whose turn it is to start the bidding, German players sometimes
@@ -202,7 +224,7 @@
   \section*{Possible Contracts}
 
   The winner of the bidding is entitled to pick up the two skat cards, add them
-  to your hand without showing them ot the other players, and discard any two
+  to your hand without showing them to the other players, and discard any two
   cards face down. The cards discarded may include one or both of the cards
   picked up, and their value counts along with your tricks. Having discarded,
   you declare your game. If you looked at the skat, your contract is a skat
@@ -408,5 +430,30 @@
   A side effect of the method of scoring is that if there are four players at
   the table, the dealer of a hand is effectively against the declarer, winning
   or losing the same as the declarer's opponents.
+
+  \section*{Variations}
+
+  \subsection*{Kontra and Rekontra}
+  
+  This variation is very widely played in social games. Either opponent of the
+  declarer, at any time before they play their card to the first trick, may say
+  {\bfseries kontra}. This doubles the score for the contract, whether won or
+  lost. The declarer may immediately answer with {\bfseries rekontra}, which
+  doubles the score again.
+
+  Note that it is the {\bfseries score} that is doubled, not the {\bfseries
+  value} of the contract. For example suppose I bid up to 20, look at the skat,
+  and play in diamonds. I am only with one matador, but am hoping to make the
+  opponents schneider. One of the opponents says Kontra, and in the play I win
+  85 card points. As I am with 1, the game value is 18, so I have overbid (the
+  Kontra does not affect this).  So I lose based on the lowest multiple of
+  diamonds which would have been sufficient, namely 27. I lose double because I
+  looked at the skat and the score is doubled again for the Kontra, so I lose
+  108 game points altogether.
+
+  There is some variation as to when Kontra and Rekontra can be said. Some play
+  that Kontra can only be said before the first lead (and a declarer who is
+  Forehand must wait before leading to give the opponents an opportunity to
+  Kontra).
 
 \end{document}
